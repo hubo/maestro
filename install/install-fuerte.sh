@@ -23,14 +23,14 @@ BLACKLIST_VIOLATED=4
 cd ${0%/*}
 
 # Stop execution on any significant error.
-set -e
+#set -e
 
 echo "ROS-Fuerte Maestro installation Script"
 echo "Version 1.0"
 echo ""
 
 DEPENDENCY_DIRS="/etc /etc/apt /etc/apt/sources.list.d"
-DEPENDENCY_FILES="~/.bashrc"
+DEPENDENCY_FILES=""
 BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation"
 BLACKLISTED_FILES=""
 
@@ -59,7 +59,7 @@ for dir in $DEPENDENCY_DIRS; do
         see "dir" "$dir"
         retval=$?
         if [[ "$retval" != 0 ]]; then
-                echo "Required dependency $dir was found."
+                echo "Required dependency $dir was not found."
                 exit $NOT_FOUND
         fi
 done
