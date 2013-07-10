@@ -32,7 +32,7 @@ echo ""
 DEPENDENCY_DIRS="/etc /etc/apt /etc/apt/sources.list.d"
 DEPENDENCY_FILES=""
 BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation"
-BLACKLISTED_FILES=""
+BLACKLISTED_FILES="/opt/ros/fuerte/stacks/maestro"
 
 function see() {
         if [[ $# != 2 ]]; then
