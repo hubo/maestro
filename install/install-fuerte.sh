@@ -33,8 +33,9 @@ echo ""
 
 DEPENDENCY_DIRS="/etc /etc/apt /etc/apt/sources.list.d"
 DEPENDENCY_FILES=""
-BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation"
-BLACKLISTED_FILES="/opt/ros/fuerte/stacks/maestro"
+BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation
+/opt/ros/fuerte/stacks/maestro"
+BLACKLISTED_FILES=""
 
 function see() {
         if [[ $# != 2 ]]; then
