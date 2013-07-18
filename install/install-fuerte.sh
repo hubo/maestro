@@ -8,9 +8,11 @@
 #	--auto-yes	: See -y
 #
 # Dependencies:
+#	/etc/apt/sources.list    (If you're missing this, reinstall Ubuntu.)	
 #	
-#
-#
+# Blacklist:
+#	/opt/ros/fuerte/stacks/armnavigation	(Mercury complains)
+#	/opt/ros/fuerte/stacks/maestro		(No previous installs)
 #
 
 # Exit Error Codes

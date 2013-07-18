@@ -58,7 +58,7 @@ for dir in $DEPENDENCY_DIRS; do
         see "dir" "$dir"
         retval=$?
         if [[ "$retval" != 0 ]]; then
-                echo "Required dependency $dir was found."
+                echo "Required dependency $dir was not found."
                 exit $NOT_FOUND
         fi
 done
