@@ -14,6 +14,8 @@
 #	/opt/ros/fuerte/stacks/armnavigation	(Mercury complains)
 #	/opt/ros/fuerte/stacks/maestro		(No previous installs)
 #
+# Author: Solis Knight
+# Date: July 2013
 
 # Exit Error Codes
 WRONG_NUMBER_ARGUMENTS=1
