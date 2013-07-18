@@ -25,7 +25,7 @@ cd ${0%/*}
 source ../maestro/utils.sh
 
 # Stop execution on any significant error.
-set -e
+#set -e
 
 echo "ROS-Fuerte Maestro installation Script"
 echo "Version 1.0"
@@ -37,21 +37,12 @@ BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation
 /opt/ros/fuerte/stacks/maestro"
 BLACKLISTED_FILES=""
 
-check dependency file "$DEPENDENCY_DIRS"
+check dependency file "$DEPENDENCY_FILES"
 check dependency dir "$DEPENDENCY_DIRS"
 check blacklist file "$BLACKLISTED_FILES"
 check blacklist dir "$BLACKLISTED_DIRS"
 
-
-
 installDir=`pwd`
-
-
-
-
-
-
-
 
 if [[ $# -lt 1 ]]; then
 	QUIET=false
