@@ -21,7 +21,7 @@ BLACKLIST_VIOLATED=4
 # Attempts to find an item, given a qualified name. (Including path)
 #
 # Arguments: 2
-# $1: Mode: either "file" or "directory"
+# $1: Mode: either "file" or "dir"
 # $2: Name: name of file or directory to see
 #
 # Returns: 4
@@ -61,7 +61,7 @@ function see() {
 #
 # Arguments: 3
 # $1: Mode: either "dependency" or "blacklist"
-# $2: Type: either "file" or "directory" - see function "see"
+# $2: Type: either "file" or "dir" - see function "see"
 # $3: Names: list of files or directories to check
 #
 # Returns: 5
@@ -83,11 +83,9 @@ function check() {
 
 	case "$1" in
 	"dependency" )
-		MODE=$DEPENDENCY
-		break;;
+		MODE=$DEPENDENCY;;
 	"blacklist" )
-		MODE=$BLACKLIST
-		break;;
+		MODE=$BLACKLIST;;
 	*)
 		return $BAD_ARGUMENTS
 	esac
@@ -105,13 +103,13 @@ function check() {
 				echo "Required dependency $item was not found."
 				return $NOT_FOUND
 			fi 
-			break;;
+			;;
 		$SUCCESS )
 			if [[ $MODE = $BLACKLIST ]]; then
 				echo "Blacklsited $1 $item was found."
 				return $BLACKLIST_VIOLATED
 			fi
-			break;;
+			;;
 		*)
 			return $NOT_FOUND
 		esac
