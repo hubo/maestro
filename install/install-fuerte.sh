@@ -8,7 +8,7 @@
 #	--auto-yes	: See -y
 #
 # Dependencies:
-# 	<maestro install dir>/maestro/utils.sh
+# 	<Maestro install dir>/maestro/utils.sh
 #	/etc/apt/sources.list    (If you're missing this, reinstall Ubuntu.)	
 #	
 # Blacklist:
@@ -28,7 +28,7 @@ source ../maestro/utils.sh
 #set -e
 
 echo "ROS-Fuerte Maestro installation Script"
-echo "Version 1.0"
+echo "Version $VERSION"
 echo ""
 
 DEPENDENCY_DIRS="/etc /etc/apt /etc/apt/sources.list.d"
@@ -37,10 +37,14 @@ BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation
 /opt/ros/fuerte/stacks/maestro"
 BLACKLISTED_FILES=""
 
-check dependency file "$DEPENDENCY_FILES"
 check dependency dir "$DEPENDENCY_DIRS"
-check blacklist file "$BLACKLISTED_FILES"
+if [[ $? != $SUCCESS ]]; then exit $?; fi
+check dependency file "$DEPENDENCY_FILES"
+if [[ $? != $SUCCESS ]]; then exit $?; fi
 check blacklist dir "$BLACKLISTED_DIRS"
+if [[ $? != $SUCCESS ]]; then exit $?; fi
+check blacklist file "$BLACKLISTED_FILES"
+if [[ $? != $SUCCESS ]]; then exit $?; fi
 
 installDir=`pwd`
 

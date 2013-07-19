@@ -4,11 +4,12 @@
 # various ROS stacks. Additionally, the hubo-ach-ros-visualization package
 # will be installed and configured.
 #
-# Options:
+# Options: None
 #
 # Dependencies:
+#	<Maestro Install Dir>/maestro/utils.sh
 #
-# Blacklist:
+# Blacklist: None
 #
 # Author: Solis Knight
 # Date: July 2013
@@ -23,7 +24,7 @@ source ../maestro/utils.sh
 #set -e
 
 echo "Hubo-ACH - Maestro installation script"
-echo "Version 1.0"
+echo "Version $VERSION"
 echo ""
 
 DEPENDENCY_DIRS="/opt /opt/ros /opt/ros/fuerte /opt/ros/fuerte/stacks"
@@ -33,9 +34,13 @@ BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/hubo-ach-ros
 BLACKLISTED_FILES=""
 
 check dependency dir "$DEPENDENCY_DIRS"
+if [[ $? != 0 ]]; then exit $?; fi
 check dependency file "$DEPENDENCY_FILES"
+if [[ $? != 0 ]]; then exit $?; fi
 check blacklist dir "$BLACKLISTED_DIRS"
+if [[ $? != 0 ]]; then exit $?; fi
 check blacklist file "$BLACKLISTED_FILES"
+if [[ $? != 0 ]]; then exit $?; fi
 
 
 #Hubo-Ach

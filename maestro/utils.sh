@@ -10,6 +10,8 @@
 #
 #
 
+VERSION="2.0"
+
 # Exit Error Codes
 SUCCESS=0
 WRONG_NUMBER_ARGUMENTS=1
@@ -115,4 +117,59 @@ function check() {
 		esac
         done
 	return $SUCCESS
+}
+
+# Function cdHere
+# Normalizes the current working directory by moving to the directory of the 
+# calling script.
+#
+# Arguments: 1
+# $1: Script path - this function should be called with "$0" as the argument.
+#
+# Returns: 3
+# $SUCCESS - Successful cd
+# $WRONG_NUMBER_ARGUMENTS - there was not exactly 1 argument provided.
+# $? - If cd returns an error, it will be passed to the caller.
+#
+# Author: Solis Knight
+# Date: July 2013
+function cdHere() {
+	if [[ $# != 1 ]]; then
+                return $WRONG_NUMBER_ARGUMENTS
+        fi
+
+	cd ${1%/*}
+	return $?
+}
+
+# Function currentBranch
+# Stores the name of the current git branch into the passed-in variable.
+#
+# Arguments: 1
+# $1: Return_val - variable to store the branch name into.
+#
+# Returns: 1
+# $SUCCESS - Successful `git branch`
+# $WRONG_NUMBER_ARGUMENTS - there was not exactly 1 argument provided.
+# $? - If `git branch` returns an error, it will be passed to the caller.
+#
+# Author: Solis Knight
+# Date: July 2013
+function currentBranch() {
+	if [[ $# != 1 ]]; then
+                return $WRONG_NUMBER_ARGUMENTS
+        fi
+
+	# Store the name of the current branch into the passed-in variable
+	#Command Substitution Method
+	OUTPUT=`git branch`
+	if [[ $? != 0 ]]; then return $?; fi
+	OUTPUT=${OUTPUT##*\*\ }
+	eval "$1=${OUTPUT%%[[:space:]]*}"
+	return $SUCCESS
+
+	# Store the name of the current branch into passed-in variable
+	# Grep | Sed method
+	#eval "$1=`git branch | grep "^\*" | sed "s/..//"`"
+	#return $SUCCESS
 }
