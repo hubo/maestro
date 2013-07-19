@@ -156,16 +156,17 @@ function cdHere() {
 # Author: Solis Knight
 # Date: July 2013
 function currentBranch() {
-	if [[ $# != 1 ]]; then
-                return $WRONG_NUMBER_ARGUMENTS
-        fi
+	#if [[ $# != 1 ]]; then
+	#	return $WRONG_NUMBER_ARGUMENTS
+    #fi
 
 	# Store the name of the current branch into the passed-in variable
 	#Command Substitution Method
 	OUTPUT=`git branch`
 	if [[ $? != 0 ]]; then return $?; fi
 	OUTPUT=${OUTPUT##*\*\ }
-	eval "$1=${OUTPUT%%[[:space:]]*}"
+	OUTPUT=${OUTPUT%%[[:space:]]*}
+	eval "$1=$OUTPUT"
 	return $SUCCESS
 
 	# Store the name of the current branch into passed-in variable
