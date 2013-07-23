@@ -69,5 +69,3 @@ else
 	echo "Unable to find a hubo-ach-ros installation. Skipping update."
 fi
 
-
-
