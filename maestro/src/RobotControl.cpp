@@ -135,7 +135,6 @@ RobotControl::RobotControl(const std::string& name) : TaskContext(name) {
 
     RUN_TYPE = getRunType(CONFIG_PATH);
 
-    receipts = 0;
 }
   
 RobotControl::~RobotControl(){}
@@ -174,16 +173,6 @@ void RobotControl::updateHook(){
 	}
 	if (commHandler->isNew(3)){
 		//Received update from Hubo-Ach
-
-		timespec receipt;
-		clock_gettime(CLOCK_REALTIME, &receipt);
-		long time = receipt.tv_nsec;
-		hubomsg::HuboState huboState = commHandler->getState();
-		if (time - huboState.nsec > 0 && receipts < 10000){
-			tempOutput << time - huboState.nsec << std::endl;
-
-			receipts++;
-		}
 
 		updateState();
 	}
