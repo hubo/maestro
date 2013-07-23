@@ -34,13 +34,13 @@ BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/hubo-ach-ros
 BLACKLISTED_FILES=""
 
 check dependency dir "$DEPENDENCY_DIRS"
-if [[ $? != 0 ]]; then exit $?; fi
+if [[ $? != 0 ]]; then exit $NOT_FOUND; fi
 check dependency file "$DEPENDENCY_FILES"
-if [[ $? != 0 ]]; then exit $?; fi
+if [[ $? != 0 ]]; then exit $NOT_FOUND; fi
 check blacklist dir "$BLACKLISTED_DIRS"
-if [[ $? != 0 ]]; then exit $?; fi
+if [[ $? != 0 ]]; then exit $BLACKLIST_VIOLATED; fi
 check blacklist file "$BLACKLISTED_FILES"
-if [[ $? != 0 ]]; then exit $?; fi
+if [[ $? != 0 ]]; then exit $BLACKLIST_VIOLATED; fi
 
 
 #Hubo-Ach

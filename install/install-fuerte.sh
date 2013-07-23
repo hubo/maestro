@@ -38,13 +38,13 @@ BLACKLISTED_DIRS="/opt/ros/fuerte/stacks/armnavigation
 BLACKLISTED_FILES=""
 
 check dependency dir "$DEPENDENCY_DIRS"
-if [[ $? != $SUCCESS ]]; then exit $?; fi
+if [[ $? != $SUCCESS ]]; then exit $NOT_FOUND; fi
 check dependency file "$DEPENDENCY_FILES"
-if [[ $? != $SUCCESS ]]; then exit $?; fi
+if [[ $? != $SUCCESS ]]; then exit $NOT_FOUND; fi
 check blacklist dir "$BLACKLISTED_DIRS"
-if [[ $? != $SUCCESS ]]; then exit $?; fi
+if [[ $? != $SUCCESS ]]; then exit $BLACKLIST_VIOLATED; fi
 check blacklist file "$BLACKLISTED_FILES"
-if [[ $? != $SUCCESS ]]; then exit $?; fi
+if [[ $? != $SUCCESS ]]; then exit $BLACKLIST_VIOLATED; fi
 
 installDir=`pwd`
 
